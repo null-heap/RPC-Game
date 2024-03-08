@@ -1,6 +1,5 @@
 console.log(getComputerChoice());
-var playerScore = 0;
-var computerScore = 0;
+
 
 function getComputerChoice()
 {
@@ -16,49 +15,58 @@ function playRound(playerSelection, computerSelection){
 
     if(playerSelection == computerSelection)
     {
-        return "its a tie"
+        return 2;
     }
     if(playerSelection == "rock" & computerSelection == "paper"){
-        computerScore++;
-        return "You Lose! Paper beats Rock"
+        return 0;
     }
     if(playerSelection == "rock" & computerSelection == "scissors"){
-        score++;
-        return "You Win! Rock beats Scissors"
+        return 1;
     }
     if(playerSelection == "paper" & computerSelection == "rock"){
-        score++;
-        return "You Win! Paper beats Rock"
+        return 1;
     }
     if(playerSelection == "paper" & computerSelection == "scissors"){
-        computerScore++;
-        return "You Lose! Scissors beats Paper"
+        return 0;
     }
     if(playerSelection == "scissors" & computerSelection == "rock"){
-        computerScore++;
-        return "You Lose! Rock beats Scissors"
+        return 0;
     }
     if(playerSelection == "scissors" & computerSelection == "paper"){
-        score++;
-        return "You Win! Scissors beats Paper"
+        return 1;
     }
-    return "incorrect input"
+    return 3;
 }
 
 function playGame(){
+    let playerScore = 0;
+    let computerScore = 0;
     for(let i=0; i< 5;i++){
-    let playerSelection = prompt("chose your firearm");
-    let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection,computerSelection));
+        console.log(`round - **${i + 1}**`)
+        let playerSelection = prompt("chose your firearm");
+        let computerSelection = getComputerChoice();
+        let result = playRound(playerSelection,computerSelection);
+
+        if(result==1 ){
+         console.log(`player wins, ${playerSelection} beats ${computerSelection}`)
+         playerScore++;
+        }else if(result == 0){
+            console.log(`computer wins!!!, ${computerSelection} beats ${playerSelection}`)
+            computerScore++;
+        }else if( result== 2){
+            console.log("its a tie")
+        }else{
+            console.log("**incorrect input by user**")
+        }
     }
     console.log(`player Score =${playerScore}, computer Score =${computerScore}`)
 
     if(playerScore == computerScore){
-        return "ITS a TIE! NO Winners";
+    console.log("ITS a TIE! NO Winners") 
     }else if(playerScore < computerScore){
-        return "Computer Winns!"
+        console.log("Computer Winns!") 
     }else{
-        return "Player Wins."
+        console.log("Player Wins.")
     }
 }
-playGame();
+playGame()
