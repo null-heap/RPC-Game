@@ -38,10 +38,10 @@ function playRound(playerSelection, computerSelection){
     return 3;
 }
 
-function playGame(){
+function playGame(rounds){
     let playerScore = 0;
     let computerScore = 0;
-    for(let i=0; i< 5;i++){
+    for(let i=0; i< rounds;i++){
         console.log(`round - **${i + 1}**`)
         let playerSelection = prompt("chose your firearm");
         let computerSelection = getComputerChoice();
@@ -69,4 +69,4 @@ function playGame(){
         console.log("Player Wins.")
     }
 }
-playGame()
+playGame(5);
